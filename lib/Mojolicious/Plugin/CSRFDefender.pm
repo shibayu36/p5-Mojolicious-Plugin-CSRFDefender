@@ -226,7 +226,7 @@ Register plugin in L<Mojolicious> application.
 
 =head1 REPOSITORY
 
-https://github.com/shiba-yu36/p5-Mojolicious-Plugin-CSRFDefender
+https://github.com/shibayu36/p5-Mojolicious-Plugin-CSRFDefender
 
 =head1 AUTHOR
 
