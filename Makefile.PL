@@ -19,6 +19,5 @@ test_requires 'Test::Mojo';
 
 recursive_author_tests('xt');
 
-auto_install;
 WriteAll;
 
