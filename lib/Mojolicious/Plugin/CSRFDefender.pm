@@ -39,7 +39,7 @@ sub register {
     }
 
     # input check
-    $app->hook(after_static_dispatch => sub {
+    $app->hook(before_dispatch => sub {
         my ($c) = @_;
         unless ($self->_validate_csrf($c)) {
             my $content;
