@@ -2,7 +2,7 @@ package t::CSRFDefender::Base;
 use strict;
 use warnings;
 
-use Test::More tests => 19;
+use Test::More tests => 23;
 
 use Mojolicious::Lite;
 use Test::Mojo;
@@ -10,6 +10,7 @@ use Test::Mojo;
 # configure routing
 get '/get' => 'get';
 any [qw(get post)] => '/post' => 'post';
+any [qw(get post)] => '/single-quotes' => 'single_quotes';
 
 # load plugin
 plugin 'Mojolicious::Plugin::CSRFDefender';
@@ -40,6 +41,10 @@ my $body2 = $t->tx->res->body;
 my ($token_param2) = $body2 =~ /name="csrftoken" value="(.*?)"/;
 is $token_param2, $token_param;
 
+$t->get_ok('/single-quotes')->status_is(200)
+  ->element_exists('form input[name="csrftoken"]')
+  ->content_like(qr/name="csrftoken" value="(.*?)"/);
+
 __DATA__;
 
 @@ get.html.ep
@@ -58,6 +63,16 @@ __DATA__;
     <form action="/post" method="post">
       <input name="text" />
       <input type="submit" value="send" />
+    </form>
+  </body>
+</html>
+
+@@ single_quotes.html.ep
+<html>
+  <body>
+    <form action='/post' method='post'>
+      <input name='text' />
+      <input type='submit' value='send' />
     </form>
   </body>
 </html>

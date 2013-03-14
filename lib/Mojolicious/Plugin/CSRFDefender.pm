@@ -39,7 +39,7 @@ sub register {
     }
 
     # input check
-    $app->hook(after_static_dispatch => sub {
+    $app->hook(before_dispatch => sub {
         my ($c) = @_;
         unless ($self->_validate_csrf($c)) {
             my $content;
@@ -63,7 +63,7 @@ sub register {
         my $token = $self->_get_csrf_token($c);
         my $p_name = $self->parameter_name;
         my $body = $c->res->body;
-        $body =~ s{(<form\s*[^>]*method="POST"[^>]*>)}{$1\n<input type="hidden" name="$p_name" value="$token" />}isg;
+        $body =~ s{(<form\s*[^>]*method=["']POST["'][^>]*>)}{$1\n<input type="hidden" name="$p_name" value="$token" />}isg;
         $c->res->body($body);
     });
 
