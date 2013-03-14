@@ -16,3 +16,4 @@ Mojolicious-Plugin-CSRFDefender-
 ^\.#
 ^\.prove
 ^\.gitignore$
+^MYMETA\.
