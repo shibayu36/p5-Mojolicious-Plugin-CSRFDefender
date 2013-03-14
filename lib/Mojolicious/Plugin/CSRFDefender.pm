@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.0.6';
+our $VERSION = '0.0.7';
 
 use base qw(Mojolicious::Plugin Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw(
@@ -116,7 +116,7 @@ Mojolicious::Plugin::CSRFDefender - Defend CSRF automatically in Mojolicious App
 
 =head1 VERSION
 
-This document describes Mojolicious::Plugin::CSRFDefender version 0.0.6
+This document describes Mojolicious::Plugin::CSRFDefender.
 
 
 =head1 SYNOPSIS
