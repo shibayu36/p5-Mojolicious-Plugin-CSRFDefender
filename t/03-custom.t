@@ -44,7 +44,7 @@ like $s_token, qr{^[a-zA-Z0-9_]{40}$}, 'valid session token';
 $t->post_ok('/post')->status_is(400)->content_like(qr{Bad Request});
 
 # can access if exists csrf_token session and parameter
-$t->post_form_ok('/post' => {'param-csrftoken' => $token_param})
+$t->post_ok('/post' => form => {'param-csrftoken' => $token_param})
   ->status_is(200);
 
 __DATA__;

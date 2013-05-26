@@ -30,7 +30,7 @@ my ($token_param) = $body =~ /name="csrftoken" value="(.*?)"/;
 like $token_param, qr{^[a-zA-Z0-9_]{32}$}, 'valid token';
 
 # can access if exists csrf_token session and parameter
-$t->post_form_ok('/post' => {'csrftoken' => $token_param})
+$t->post_ok('/post' => form => {'csrftoken' => $token_param})
   ->status_is(200);
 
 # when access again, token is changed
@@ -41,7 +41,7 @@ like $token_param2, qr{^[a-zA-Z0-9_]{32}$}, 'valid token';
 isnt $token_param, $token_param2;
 
 # can access if exists csrf_token session and parameter
-$t->post_form_ok('/post' => {'csrftoken' => $token_param2})
+$t->post_ok('/post' => form => {'csrftoken' => $token_param2})
   ->status_is(200);
 
 __DATA__;

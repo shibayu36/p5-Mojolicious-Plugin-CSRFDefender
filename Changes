@@ -1,5 +1,8 @@
 Revision history for Mojolicious::Plugin::CSRFDefender
 
+0.0.8    Sun May 26 22:36:54 2013
+        - update tests for Mojolicious 4.0
+
 0.0.7    Thu Mar 14 21:22:03 2013
         - supports single quote in form method
         - don't use deprecated hook
