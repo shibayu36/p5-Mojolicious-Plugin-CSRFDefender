@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.0.7';
+our $VERSION = '0.0.8';
 
 use base qw(Mojolicious::Plugin Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw(
